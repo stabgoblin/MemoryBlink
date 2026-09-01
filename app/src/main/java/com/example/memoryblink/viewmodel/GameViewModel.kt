@@ -85,9 +85,10 @@ class GameViewModel(private val repository: HighScoreRepository) : ViewModel() {
             val halfway = gridSize / 2.0
             val middleIdx = gridSize / 2
             
-            val applyRule1 = secureRandom.nextBoolean()
-            val applyRule2 = secureRandom.nextBoolean()
-            val applyRule3 = secureRandom.nextBoolean()
+            val useRules = secureRandom.nextBoolean()
+            val applyRule1 = useRules && secureRandom.nextBoolean()
+            val applyRule2 = useRules && secureRandom.nextBoolean()
+            val applyRule3 = useRules && secureRandom.nextBoolean()
             val recentButtons = _uiState.value.sequence.takeLast(3)
             
             var attempts = 0
