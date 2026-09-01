@@ -104,7 +104,7 @@ class GameViewModel(private val repository: HighScoreRepository) : ViewModel() {
             }
             
             val delayTime = if (_uiState.value.difficulty == Difficulty.Medium) {
-                (500 - (_uiState.value.round * 25)).coerceAtLeast(150).toLong()
+                (500 - (_uiState.value.round * 40)).coerceAtLeast(150).toLong()
             } else {
                 500L
             }
