@@ -1,4 +1,4 @@
-package com.example.brainy.data
+package com.example.memoryblink.data
 
 import android.content.Context
 import androidx.datastore.core.DataStore
@@ -6,7 +6,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
-import com.example.brainy.viewmodel.Difficulty
+import com.example.memoryblink.viewmodel.Difficulty
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

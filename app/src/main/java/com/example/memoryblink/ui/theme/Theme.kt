@@ -1,4 +1,4 @@
-package com.example.brainy.ui.theme
+package com.example.memoryblink.ui.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme

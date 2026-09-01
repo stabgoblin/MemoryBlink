@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.brainy"
+    namespace = "com.example.memoryblink"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.brainy"
+        applicationId = "com.example.memoryblink"
         minSdk = 24
         targetSdk = 34
         versionCode = 1

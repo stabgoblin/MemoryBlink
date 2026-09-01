@@ -1,4 +1,4 @@
-package com.example.brainy
+package com.example.memoryblink
 
 import org.junit.Test
 

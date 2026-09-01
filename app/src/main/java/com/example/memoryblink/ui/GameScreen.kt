@@ -1,4 +1,4 @@
-package com.example.brainy.ui
+package com.example.memoryblink.ui
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.core.animateFloatAsState
@@ -21,10 +21,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalHapticFeedback
-import com.example.brainy.viewmodel.Difficulty
-import com.example.brainy.viewmodel.GameState
-import com.example.brainy.viewmodel.GameStatus
-import com.example.brainy.viewmodel.GameViewModel
+import com.example.memoryblink.viewmodel.Difficulty
+import com.example.memoryblink.viewmodel.GameState
+import com.example.memoryblink.viewmodel.GameStatus
+import com.example.memoryblink.viewmodel.GameViewModel
 
 enum class ScreenType { Start, Game, GameOver }
 

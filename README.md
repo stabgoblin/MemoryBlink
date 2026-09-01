@@ -1,6 +1,6 @@
-# Brainy - Memory Blink Game
+# MemoryBlink - Memory Blink Game
 
-Brainy is a modern, challenging "Simon Says" style memory game built for Android using Kotlin and Jetpack Compose. Test your memory skills across three different difficulty modes!
+MemoryBlink is a modern, challenging "Simon Says" style memory game built for Android using Kotlin and Jetpack Compose. Test your memory skills across three different difficulty modes!
 
 ## Features
 
@@ -24,7 +24,7 @@ Brainy is a modern, challenging "Simon Says" style memory game built for Android
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/brainy.git
+   git clone https://github.com/yourusername/memory-blink.git
    ```
 2. Open the project in Android Studio.
 3. Sync the project with Gradle files.

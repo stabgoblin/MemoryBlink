@@ -1,4 +1,4 @@
-package com.example.brainy.ui.theme
+package com.example.memoryblink.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

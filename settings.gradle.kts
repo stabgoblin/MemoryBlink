@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "brainy"
+rootProject.name = "MemoryBlink"
 include(":app")
  
