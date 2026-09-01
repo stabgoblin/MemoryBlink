@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import kotlin.random.Random
+import java.security.SecureRandom
 
 enum class Difficulty { Easy, Medium, Hard }
 
@@ -31,6 +31,8 @@ data class GameState(
 )
 
 class GameViewModel(private val repository: HighScoreRepository) : ViewModel() {
+
+    private val secureRandom = SecureRandom()
 
     private val _uiState = MutableStateFlow(GameState())
     val uiState: StateFlow<GameState> = _uiState.asStateFlow()
@@ -74,9 +76,9 @@ class GameViewModel(private val repository: HighScoreRepository) : ViewModel() {
             Difficulty.Medium -> 16
             Difficulty.Hard -> 25
         }
-        var newButton = Random.nextInt(gridCount)
+        var newButton = secureRandom.nextInt(gridCount)
         while (lastButton != null && newButton == lastButton) {
-            newButton = Random.nextInt(gridCount)
+            newButton = secureRandom.nextInt(gridCount)
         }
         val newSequence = _uiState.value.sequence + newButton
         
