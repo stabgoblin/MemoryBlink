@@ -87,27 +87,39 @@ class GameViewModel(private val repository: HighScoreRepository) : ViewModel() {
             
             val applyRule1 = secureRandom.nextBoolean()
             val applyRule2 = secureRandom.nextBoolean()
+            val applyRule3 = secureRandom.nextBoolean()
+            val recentButtons = _uiState.value.sequence.takeLast(3)
             
+            var attempts = 0
             while (true) {
+                attempts++
                 val newRow = newButton / gridSize
                 val newCol = newButton % gridSize
                 
                 var isValid = newButton != lastButton
                 
-                if (isValid && applyRule1) {
-                    val lastIsMiddle = (gridSize % 2 != 0) && (lastRow == middleIdx || lastCol == middleIdx)
-                    val newIsMiddle = (gridSize % 2 != 0) && (newRow == middleIdx || newCol == middleIdx)
-                    
-                    if (!lastIsMiddle && !newIsMiddle) {
-                        val lastHalf = if (lastRow < halfway) 0 else 1
-                        val newHalf = if (newRow < halfway) 0 else 1
-                        if (newHalf == lastHalf) isValid = false
+                if (attempts < 50) {
+                    if (isValid && applyRule1) {
+                        val lastIsMiddle = (gridSize % 2 != 0) && (lastRow == middleIdx || lastCol == middleIdx)
+                        val newIsMiddle = (gridSize % 2 != 0) && (newRow == middleIdx || newCol == middleIdx)
+                        
+                        if (!lastIsMiddle && !newIsMiddle) {
+                            val lastHalf = if (lastRow < halfway) 0 else 1
+                            val newHalf = if (newRow < halfway) 0 else 1
+                            if (newHalf == lastHalf) isValid = false
+                        }
                     }
-                }
-                
-                if (isValid && applyRule2) {
-                    if (newRow == lastRow || newCol == lastCol) {
-                        isValid = false
+                    
+                    if (isValid && applyRule2) {
+                        if (newRow == lastRow || newCol == lastCol) {
+                            isValid = false
+                        }
+                    }
+                    
+                    if (isValid && applyRule3) {
+                        if (recentButtons.contains(newButton)) {
+                            isValid = false
+                        }
                     }
                 }
                 
