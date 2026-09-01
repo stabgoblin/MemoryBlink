@@ -71,14 +71,28 @@ class GameViewModel(private val repository: HighScoreRepository) : ViewModel() {
 
     private fun nextRound() {
         val lastButton = _uiState.value.sequence.lastOrNull()
-        val gridCount = when (_uiState.value.difficulty) {
-            Difficulty.Easy -> 9
-            Difficulty.Medium -> 16
-            Difficulty.Hard -> 25
+        val gridSize = when (_uiState.value.difficulty) {
+            Difficulty.Easy -> 3
+            Difficulty.Medium -> 4
+            Difficulty.Hard -> 5
         }
+        val gridCount = gridSize * gridSize
+        
         var newButton = secureRandom.nextInt(gridCount)
-        while (lastButton != null && newButton == lastButton) {
-            newButton = secureRandom.nextInt(gridCount)
+        if (lastButton != null) {
+            val lastRow = lastButton / gridSize
+            val halfway = gridSize / 2.0
+            val lastHalf = if (lastRow < halfway) 0 else 1
+            
+            while (true) {
+                val newRow = newButton / gridSize
+                val newHalf = if (newRow < halfway) 0 else 1
+                
+                if (newButton != lastButton && newHalf != lastHalf) {
+                    break
+                }
+                newButton = secureRandom.nextInt(gridCount)
+            }
         }
         val newSequence = _uiState.value.sequence + newButton
         
