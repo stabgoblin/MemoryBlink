@@ -81,14 +81,37 @@ class GameViewModel(private val repository: HighScoreRepository) : ViewModel() {
         var newButton = secureRandom.nextInt(gridCount)
         if (lastButton != null) {
             val lastRow = lastButton / gridSize
+            val lastCol = lastButton % gridSize
             val halfway = gridSize / 2.0
-            val lastHalf = if (lastRow < halfway) 0 else 1
+            val middleIdx = gridSize / 2
+            
+            val applyRule1 = secureRandom.nextBoolean()
+            val applyRule2 = secureRandom.nextBoolean()
             
             while (true) {
                 val newRow = newButton / gridSize
-                val newHalf = if (newRow < halfway) 0 else 1
+                val newCol = newButton % gridSize
                 
-                if (newButton != lastButton && newHalf != lastHalf) {
+                var isValid = newButton != lastButton
+                
+                if (isValid && applyRule1) {
+                    val lastIsMiddle = (gridSize % 2 != 0) && (lastRow == middleIdx || lastCol == middleIdx)
+                    val newIsMiddle = (gridSize % 2 != 0) && (newRow == middleIdx || newCol == middleIdx)
+                    
+                    if (!lastIsMiddle && !newIsMiddle) {
+                        val lastHalf = if (lastRow < halfway) 0 else 1
+                        val newHalf = if (newRow < halfway) 0 else 1
+                        if (newHalf == lastHalf) isValid = false
+                    }
+                }
+                
+                if (isValid && applyRule2) {
+                    if (newRow == lastRow || newCol == lastCol) {
+                        isValid = false
+                    }
+                }
+                
+                if (isValid) {
                     break
                 }
                 newButton = secureRandom.nextInt(gridCount)
